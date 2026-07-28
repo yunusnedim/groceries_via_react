@@ -9,8 +9,8 @@ function Square(props) {
 }
 
 function Information(props) {
-    if (props.winner) {
-        return <h1>Game Over. Winner: {props.winner}</h1>;
+    if (winner(props.squares)) {
+        return <h1>Game Over. Winner: {winner(props.squares)}</h1>;
     } else if (props.xturn) {
         return <h1>Next turn: X</h1>;
     } else {
@@ -18,7 +18,7 @@ function Information(props) {
     }
 }
 
-function Winner(props) {
+function winner(props) {
     if (props[0] === props[1] && props[1] === props[2]) {
         return props[0];
     } else if (props[3] === props[4] && props[4] === props[5]) {
@@ -51,16 +51,10 @@ function turnsLeft(props) {
     );
 }
 
-function clickHandler(squares, i) {
-    const nextSquares = squares.slice();
-    nextSquares[i] = 'O';
-    setSquares(nextSquares);
-}
-
 export default function Board() {
     function clickHandler(squares, i) {
         const nextSquares = squares.slice();
-        if (turnsLeft(squares) == 0) {
+        if (winner(squares) || turnsLeft(squares) == 0 || squares[i]) {
             return;
         }
         nextSquares[i] = xturn ? 'X' : 'O';
@@ -72,11 +66,9 @@ export default function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [xturn, setXturn] = useState(true);
 
-    const winner = Winner(squares);
-
     return (
         <>
-            <Information winner={winner} xturn={xturn} />
+            <Information squares={squares} xturn={xturn} />
 
             <div className='board-row'>
                 <Square
