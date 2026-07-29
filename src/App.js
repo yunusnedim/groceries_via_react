@@ -33,9 +33,15 @@ function ProductTable(props) {
     });
 
     return (
-        <div>
-            <div>{rows}</div>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+        </table>
     );
 }
 
