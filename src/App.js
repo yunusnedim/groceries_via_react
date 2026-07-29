@@ -1,7 +1,16 @@
 import React, {useState} from 'react';
 
 function SearchBar() {
-    return <h1>SearchBar</h1>;
+    return (
+        <div>
+            <input
+                type='search'
+                placeholder='Search...'
+                id='site-search'
+            ></input>
+            <button type='submit'>Search</button>
+        </div>
+    );
 }
 
 function ProductTable(props) {
