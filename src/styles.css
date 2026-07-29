@@ -56,6 +56,13 @@ body {
     padding: 0;
 }
 
+table,
+th,
+td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
 .status {
     margin-bottom: 10px;
 }

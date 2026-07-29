@@ -40,16 +40,22 @@ function ProductTable(props) {
 }
 
 function ProductCategoryRow(props) {
-    return <h2>{props.category}</h2>;
+    // return <h2>{props.category}</h2>;
+    return (
+        <tr>
+            {/* header spanning 2 columns */}
+            <th colSpan='2'>{props.category}</th>
+        </tr>
+    );
 }
 
 function ProductRow(props) {
     // return <h3>{props.product.name}</h3>;
     return (
-        <div>
-            {props.product.name}
-            {props.product.price}
-        </div>
+        <tr>
+            <td>{props.product.name}</td>
+            <td>{props.product.price}</td>
+        </tr>
     );
 }
 
