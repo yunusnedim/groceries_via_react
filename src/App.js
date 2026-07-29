@@ -30,6 +30,14 @@ function ProductTable(props) {
     let mostRecentCategory = null;
 
     props.products.forEach((product) => {
+        if (
+            product.name
+                .toLowerCase()
+                .indexOf(props.filterText.toLowerCase()) === -1
+        ) {
+            return;
+        }
+
         if (product.category !== mostRecentCategory) {
             mostRecentCategory = product.category;
             rows.push(<ProductCategoryRow category={product.category} />);
