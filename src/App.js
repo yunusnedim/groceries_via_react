@@ -14,38 +14,36 @@ function SearchBar() {
 }
 
 function ProductTable(props) {
+    const rows = [];
+    let mostRecentCategory = null;
+
+    props.products.forEach((product) => {
+        if (product.category !== mostRecentCategory) {
+            mostRecentCategory = product.category;
+            rows.push(<ProductCategoryRow category={product.category} />);
+        }
+        rows.push(<ProductRow product={product} />);
+    });
+
     return (
         <div>
-            <div>
-                <ProductCategoryRow />
-                <ProductRow />
-                <ProductRow />
-            </div>
-
-            <div>
-                <ProductCategoryRow />
-                <ProductRow />
-                <ProductRow />
-            </div>
+            <div>{rows}</div>
         </div>
     );
 }
 
-function ProductCategoryRow() {
-    return <h2>ProductCategoryRow</h2>;
+function ProductCategoryRow(props) {
+    return <h2>{props.category}</h2>;
 }
 
 function ProductRow(props) {
-    return <h3>ProductRow</h3>;
-    // return (
-    //     <div>
-    //         {props.product.name}
-    //         {props.product.isInStock ? null : (
-    //             <span style={{color: 'red'}}> (Out of Stock)</span>
-    //         )}
-    //         {props.product.price.toFixed(2)}
-    //     </div>
-    // );
+    // return <h3>{props.product.name}</h3>;
+    return (
+        <div>
+            {props.product.name}
+            {props.product.price}
+        </div>
+    );
 }
 
 function FilterableProductTable(props) {
