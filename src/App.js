@@ -2,14 +2,21 @@ import React, {useState} from 'react';
 
 function SearchBar() {
     return (
-        <div>
+        <form>
             <input
                 type='search'
                 placeholder='Search...'
-                id='site-search'
+                id='site-search' //What does this ID do?
             ></input>
-            <button type='submit'>Search</button>
-        </div>
+            <br />
+            <input
+                type='checkbox'
+                id='stocked'
+                name='stocked'
+                value='stocked'
+            ></input>
+            <label htmlFor='stocked'>Only show products in stock</label>
+        </form>
     );
 }
 
