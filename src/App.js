@@ -50,10 +50,14 @@ function ProductCategoryRow(props) {
 }
 
 function ProductRow(props) {
-    // return <h3>{props.product.name}</h3>;
+    const name = props.product.stocked ? (
+        props.product.name
+    ) : (
+        <span style={{color: 'red'}}>{props.product.name} (Out of stock)</span>
+    );
     return (
         <tr>
-            <td>{props.product.name}</td>
+            <td>{name}</td>
             <td>{props.product.price}</td>
         </tr>
     );
